@@ -1,0 +1,87 @@
+\section{Lecture 8/28}
+\subsection{Categories}
+First consider all the algebraic structures we know:
+
+\begin{center}
+\begin{tabular}{c|c}
+     Structure & Action \\\hline
+     Set & Functions \\\hline
+     Group & Group Homomorphism \\\hline
+     Ring & Ring Homomorphism \\\hline
+     Field & Field homomorphism \\\hline
+     Vector Space & linear transformation \\
+\end{tabular}
+\end{center}
+
+Now we wish to abstract all these properties through category theory. Namely, an object and a morphism. 
+
+\begin{definition}
+    A category $\mathcal{C}$ consists of a:
+    \begin{itemize}
+        \item a collection of objects (c, d, x, y, z, \dots)
+        \item a collection of morphisms $(f: x\to y, g: y \to z) $
+    \end{itemize}
+    that has the following Data:
+    \begin{enumerate} [label = D\arabic*\textrangle]
+        \item Every morphism $f: x\to y$ has domain $x$ and codomain $y$ where $x,y$ are objects in the collection 
+        \item For $f: x\to y, y: y\to z, \exists g \circ f: x \to z$ in the collection of morphisms 
+        \item There is a morphism $e_x: x\to x$ s.t. $\forall f: x \to y, e_y f = f e_x = f.$ This morphism is later defined to be the identity.
+    \end{enumerate}
+     
+    Furthermore, $\mathcal{C}$ satisfies the following axioms:
+    \begin{enumerate} [label = A\arabic*\textrangle]
+        \item The identity $e_x$ satisfies $e_y f = f e_x = f$
+        \item (Associativity) If $x \xrightarrow{f} y \xrightarrow{g} z \xrightarrow{h}w,$ then $(hg)f = h(gf).$
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Notice that we do not define the identity $e_x$ as $\text{id}(x) = x$ as $x$ is not necessarily a set. 
+\end{remark}
+
+\begin{remark}
+    We explicitly use the term 'collection" instead of the term 'set' as to avoid the details of sets like Russell's paradox. What a 'collection' exactly is will be covered later.
+\end{remark}
+\begin{idea}
+    Definitions in Category Theory are cofused on how functions change, not how the underlying elements change by the function.
+\end{idea}
+
+\subsection{Poset Categories}
+\begin{definition}
+A \textbf{particularly ordered set (poset)} $(\mathcal{P}, \le)$ is a set $\mathcal{P}$ with ordering $\le$ such that:
+\begin{enumerate} [label=\arabic*\textrangle]
+    \item $a\le a$
+    \item $a\le b, b\le c \implies a \le c$
+    \item $a\le b, b\le a, \implies a = b$
+\end{enumerate}
+\begin{example}
+The following are posets:
+\begin{itemize}
+    \item $(\mathbb{N}, |)$ $  a|b, b|c \implies a|c$
+    \item $(\mathbb{R}, \le)$
+    \item $(S, \in),$ for some set $S$ as $A\in B, B\in C \implies A\in C$
+\end{itemize}
+\end{example}
+\end{definition}
+
+Now, we claim that posets form a category
+\begin{definition} [Poset Categories]c
+A \textbf{poset category} has object which are elements of $\mathcal{P}$ a \textit{unique} morphism $f:x\to y$ iff $x\le y \in \mathcal{P}.$
+    
+\end{definition}
+
+\begin{proof}
+$D1$ to $D3$ and $A1$ follow naturally where the identity $e: x\to x$ is defined by $a \le a.$ Similarly, $A2$ follows from the property of transitivity by posets.     
+\end{proof}
+
+\begin{remark}
+    Note the importance of defining the morphism as unique as transitivity guarantees a unique morphism $\le$ from $x\to z$
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJ4Il0sWzEsMCwieSJdLFsyLDAsInoiXSxbMCwxLCJmIl0sWzEsMiwiZyJdLFswLDIsImgiLDAseyJjdXJ2ZSI6LTN9XSxbMCwyLCJoJyIsMix7ImN1cnZlIjozfV1d
+\[\begin{tikzcd}
+	x & y & z
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["h", curve={height=-18pt}, from=1-1, to=1-3]
+	\arrow["{h'}"', curve={height=18pt}, from=1-1, to=1-3]
+	\arrow["g", from=1-2, to=1-3]
+\end{tikzcd}\]
+\end{remark}
