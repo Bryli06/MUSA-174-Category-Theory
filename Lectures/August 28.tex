@@ -3,20 +3,20 @@
 First consider all the algebraic structures we know:
 
 \begin{center}
-\begin{tabular}{c|c}
+\begin{tabular}{c|c} \label{table:structure-table}
      Structure & Action \\\hline
      Set & Functions \\\hline
      Group & Group Homomorphism \\\hline
      Ring & Ring Homomorphism \\\hline
      Field & Field homomorphism \\\hline
-     Vector Space & linear transformation \\
+     Vector Space over field $k$ & k-linear maps \\
 \end{tabular}
 \end{center}
 
 Now we wish to abstract all these properties through category theory. Namely, an object and a morphism. 
 
 \begin{definition}
-    A category $\mathcal{C}$ consists of a:
+    A category $\mathcal{C} (\obj(\mathcal{C}), \Mor(\mathcal{C}))$  consists of a:
     \begin{itemize}
         \item a collection of objects (c, d, x, y, z, \dots)
         \item a collection of morphisms $(f: x\to y, g: y \to z) $
@@ -33,6 +33,7 @@ Now we wish to abstract all these properties through category theory. Namely, an
         \item The identity $e_x$ satisfies $e_y f = f e_x = f$
         \item (Associativity) If $x \xrightarrow{f} y \xrightarrow{g} z \xrightarrow{h}w,$ then $(hg)f = h(gf).$
     \end{enumerate}
+
 \end{definition}
 
 \begin{remark}
@@ -40,7 +41,7 @@ Now we wish to abstract all these properties through category theory. Namely, an
 \end{remark}
 
 \begin{remark}
-    We explicitly use the term 'collection" instead of the term 'set' as to avoid the details of sets like Russell's paradox. What a 'collection' exactly is will be covered later.
+    We explicitly use the term ``collection'' instead of the term ``set'' as to avoid the details of sets like Russell's paradox. What a ``collection'' exactly is will be covered later.
 \end{remark}
 \begin{idea}
     Definitions in Category Theory are cofused on how functions change, not how the underlying elements change by the function.

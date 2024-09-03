@@ -1,0 +1,112 @@
+\section{Lecture 8/30}
+\subsection{Examples of Categories}
+We spent this class reviewing the definition of a category and going through examples.
+First consider the following diagrams. Note that they are categories with $\rightarrow$ being the morphism and $\bullet$ being objects.
+
+\begin{center}
+
+\begin{tabular}{cccc}
+% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGJ1bGxldCJdLFsxLDAsIlxcYnVsbGV0Il0sWzAsMV1d
+\begin{tikzcd}
+	\bullet & \bullet
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd} &
+% https://q.uiver.app/#q=WzAsMyxbMCwxLCJcXGJ1bGxldCJdLFsxLDEsIlxcYnVsbGV0Il0sWzEsMF0sWzAsMSwiIiwwLHsiY3VydmUiOjF9XSxbMSwwLCIiLDAseyJjdXJ2ZSI6MX1dXQ==
+\begin{tikzcd}
+	& {} \\
+	\bullet & \bullet
+	\arrow[curve={height=6pt}, from=2-1, to=2-2]
+	\arrow[curve={height=6pt}, from=2-2, to=2-1]
+\end{tikzcd} &
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXGJ1bGxldCJdLFsxLDEsIlxcYnVsbGV0Il0sWzEsMF0sWzAsMCwiXFxidWxsZXQiXSxbMywwXSxbMSwwXV0=
+\begin{tikzcd}
+	\bullet & {} \\
+	\bullet & \bullet
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-2, to=2-1]
+\end{tikzcd} & 
+% https://q.uiver.app/#q=WzAsMyxbMCwxLCJcXGJ1bGxldCJdLFsxLDEsIlxcYnVsbGV0Il0sWzEsMF1d
+\begin{tikzcd}
+	& {} \\
+	\bullet & \bullet
+\end{tikzcd}
+\end{tabular}
+\end{center}
+
+\begin{remark}
+    The identity morphism (an arrow back to itself) has been omitted in all of these diagrams as it is implied. 
+\end{remark}
+
+Notice that in the last example, there are no morphisms (other than the identity). This is a special case known as a discrete category.
+
+\begin{definition}
+    A category is discrete if all morphisms are identity.
+\end{definition}
+
+Note that given any set $\mathcal{S},$ we can generate a discrete category $S_d$ where 
+\begin{itemize}
+    \item The objects are elements of $\mathcal{S}$
+    \item The morphisms are the set of identities
+\end{itemize}
+
+Now recall the table of structures \ref{table:structure-table}. We will construct different categories using groups, vector spaces, etc. 
+
+\begin{definition} [Deloopings]
+    Let $G$ be a group. The delooping of $G, \mathcal{B}G,$ is defined as 
+    \begin{itemize}
+        \item $\obj (\mathcal{B}G) = \star,$ where $\star$ is any single element, potentially unrelated to the group. 
+        \item $\mor (\mathcal{B}G) = \{ g \in G\}$
+    \end{itemize}
+\end{definition}
+
+\begin{example} [Examples of Deloopings] 
+Think of deloopings as group actions, such as the permutations of a cube. 
+\begin{center}
+\begin{tabular}{cc}
+% https://q.uiver.app/#q=WzAsMSxbMCwwLCJcXHN0YXIiXSxbMCwwLCJmZyIsMCx7Im9mZnNldCI6LTR9XSxbMCwwLCJnIiwwLHsib2Zmc2V0IjotNCwiYW5nbGUiOi05MH1dLFswLDAsImYiLDAseyJvZmZzZXQiOi00LCJhbmdsZSI6OTB9XSxbMCwwLCJlIiwwLHsib2Zmc2V0IjotNCwiYW5nbGUiOjE4MH1dXQ==
+\begin{tikzcd}
+	\star
+	\arrow["fg", shift left=2, from=1-1, to=1-1, loop, in=55, out=125, distance=10mm]
+	\arrow["g", shift left=2, from=1-1, to=1-1, loop, in=145, out=215, distance=10mm]
+	\arrow["f", shift left=2, from=1-1, to=1-1, loop, in=325, out=35, distance=10mm]
+	\arrow["e", shift left=2, from=1-1, to=1-1, loop, in=235, out=305, distance=10mm]
+\end{tikzcd} &
+% https://q.uiver.app/#q=WzAsMSxbMCwwLCJcXHNxdWFyZSJdLFswLDAsIjAiLDAseyJvZmZzZXQiOi0yfV0sWzAsMCwiMSIsMCx7Im9mZnNldCI6LTIsImFuZ2xlIjo5MH1dLFswLDAsIjIiLDAseyJvZmZzZXQiOi0yLCJyYWRpdXMiOjUsImFuZ2xlIjo5MH1dLFswLDAsIjMiLDAseyJvZmZzZXQiOi0yLCJyYWRpdXMiOjUsImFuZ2xlIjo5MH1dXQ==
+\begin{tikzcd}
+	\square
+	\arrow["0", shift left=2, from=1-1, to=1-1, loop, in=55, out=125, distance=10mm]
+	\arrow["1", shift left=2, from=1-1, to=1-1, loop, in=325, out=35, distance=10mm]
+	\arrow["2", shift left=2, from=1-1, to=1-1, loop, in=320, out=40, distance=20mm]
+	\arrow["3", shift left=2, from=1-1, to=1-1, loop, in=320, out=40, distance=30mm]
+\end{tikzcd}
+\end{tabular}    
+\end{center}
+\end{example}
+
+\begin{definition} [Category of Opens]
+    Fix $X$ as a topological space. The category of opens
+    \begin{itemize}
+        \item $\obj (X) = $\{open subsets of $X$\}
+        \item $\mor (X) = \mor (u,v) = \left\{ \begin{array}{lr} u \to v, & u\le v \\ \emptyset, & \text{otherwise} \end{array} \right.$
+    \end{itemize}
+\end{definition}
+
+\begin{definition} [Category of Matrices]
+    We can also define a category of matrices
+    \begin{itemize}
+        \item $\obj (\mat_k) = \mathbb{N} \cup \{0\}$
+        \item $\mor (\mat_k) = \mat (m,n) = \left\{\text{n x m matrices with entries in }k \right\}$
+    \end{itemize}
+\end{definition}
+
+Now, we ask the question, how do we compare two categories? How do we know when they are the same? Consider groups, which are equal if there is an isomorphism, a bijective homomorphism, where bijectivity is injective and surjective. 
+
+\begin{definition}
+    A function is injective if $f(x) = f(y) \in H \implies x = y \in G.$
+\end{definition}
+
+\begin{definition}
+    A function is surjective if $\forall h\in H, \exists g \in G$ s.t. $\phi (g) = h$
+\end{definition}
+
+However, both these definitions require information about the objects, not the morphism itself. 
